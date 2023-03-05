@@ -11,9 +11,11 @@ import MapKit
 class ViewController: UIViewController {
     
     var locationManager: CLLocationManager?
+    private var places: [PlaceAnnotation] = []
     
     lazy var mapView: MKMapView = {
         let map = MKMapView()
+        map.delegate = self
         map.showsUserLocation = true
         map.translatesAutoresizingMaskIntoConstraints = false
         return map
@@ -84,6 +86,24 @@ class ViewController: UIViewController {
             print("Unknown error. Unable to get location.")
         }
     }
+    
+    private func presentPlacesSheet(places: [PlaceAnnotation]) {
+        guard let locationManager = locationManager,
+              let userLocation = locationManager.location else {
+            return
+        }
+                
+        
+        let placesTVC = PlacesTableViewController(userLocation: userLocation, places: places)
+        placesTVC.modalPresentationStyle = .pageSheet
+        
+        if let sheet = placesTVC.sheetPresentationController {
+            sheet.prefersGrabberVisible = true
+            sheet.detents = [.medium(), .large()]
+            present(placesTVC, animated: true)
+        }
+    }
+    
     private func findNearbyPlaces(by query: String) {
         // clear all annotations
         mapView.removeAnnotations(mapView.annotations)
@@ -97,11 +117,13 @@ class ViewController: UIViewController {
             guard let response = response, error == nil else {
                 return
             }
-            let places = response.mapItems.map(PlaceAnnotation.init)
-            places.forEach { place in
+            self?.places = response.mapItems.map(PlaceAnnotation.init)
+            self?.places.forEach { place in
                 self?.mapView.addAnnotation(place)
             }
-            print(response.mapItems)
+            if let places = self?.places {
+                self?.presentPlacesSheet(places: places)
+            }
         }
         
     }
@@ -116,6 +138,32 @@ extension ViewController: UITextFieldDelegate {
             findNearbyPlaces(by: text)
         }
         return true
+    }
+}
+
+extension ViewController: MKMapViewDelegate {
+    
+    private func clearAllSelections() {
+        self.places = self.places.map({ place in
+            place.isSelected = false
+            return place
+        })
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+        
+        // clear all selections
+        clearAllSelections()
+        
+        guard let selectionAnnotation = annotation as? PlaceAnnotation else {
+            return
+        }
+        let placeAnnotation = self.places.first(where: {
+            $0.id == selectionAnnotation.id
+        })
+        placeAnnotation?.isSelected = true
+        
+        presentPlacesSheet(places: self.places)
     }
 }
 

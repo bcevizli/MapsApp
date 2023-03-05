@@ -14,6 +14,9 @@
 		EA95F83A29B4D39500177121 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA95F83829B4D39500177121 /* LaunchScreen.storyboard */; };
 		EA95F84329B4E06100177121 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95F84229B4E06100177121 /* PlaceAnnotation.swift */; };
 		EA95F84629B4E14000177121 /* CLLocation+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95F84529B4E14000177121 /* CLLocation+Extentions.swift */; };
+		EA95F84929B50C8F00177121 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95F84829B50C8F00177121 /* PlacesTableViewController.swift */; };
+		EA95F84B29B5359C00177121 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95F84A29B5359C00177121 /* PlaceDetailViewController.swift */; };
+		EA95F84D29B53DB300177121 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95F84C29B53DB300177121 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		EA95F83B29B4D39500177121 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA95F84229B4E06100177121 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		EA95F84529B4E14000177121 /* CLLocation+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extentions.swift"; sourceTree = "<group>"; };
+		EA95F84829B50C8F00177121 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
+		EA95F84A29B5359C00177121 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		EA95F84C29B53DB300177121 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 		EA95F82C29B4D39300177121 /* MapsApp */ = {
 			isa = PBXGroup;
 			children = (
+				EA95F84729B50C6E00177121 /* Controllers */,
 				EA95F84429B4E11E00177121 /* Extensions */,
 				EA95F84129B4E04600177121 /* Annotations */,
 				EA95F82D29B4D39300177121 /* AppDelegate.swift */,
@@ -82,8 +89,18 @@
 			isa = PBXGroup;
 			children = (
 				EA95F84529B4E14000177121 /* CLLocation+Extentions.swift */,
+				EA95F84C29B53DB300177121 /* String+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EA95F84729B50C6E00177121 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EA95F84829B50C8F00177121 /* PlacesTableViewController.swift */,
+				EA95F84A29B5359C00177121 /* PlaceDetailViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,9 +175,12 @@
 			files = (
 				EA95F84629B4E14000177121 /* CLLocation+Extentions.swift in Sources */,
 				EA95F84329B4E06100177121 /* PlaceAnnotation.swift in Sources */,
+				EA95F84B29B5359C00177121 /* PlaceDetailViewController.swift in Sources */,
 				EA95F83229B4D39300177121 /* ViewController.swift in Sources */,
+				EA95F84D29B53DB300177121 /* String+Extensions.swift in Sources */,
 				EA95F82E29B4D39300177121 /* AppDelegate.swift in Sources */,
 				EA95F83029B4D39300177121 /* SceneDelegate.swift in Sources */,
+				EA95F84929B50C8F00177121 /* PlacesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
